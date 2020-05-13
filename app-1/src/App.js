@@ -1,6 +1,25 @@
-import React from 'react';
+import React, {Component} from 'react';
 import logo from './logo.svg';
 import './App.css';
+
+export default class TextBox extends Component {
+  constructor () {
+    super ()
+    this.state = {
+      text: ''
+    }
+  }
+  handleChange (value) {
+    this.setState ({ text: value})
+  }
+  render () {
+    return (
+      <div className='App'>
+        <input onChange={e => this.handleChange (e.target.value)} type="text"/>
+      </div>
+    )
+  }
+}
 
 function App() {
   return (
@@ -22,5 +41,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
