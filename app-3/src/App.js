@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+export default class FilterListApp extends Component {
+  constructor () {
+    super ()
+    this.state = {
+      filterString: '',
+      sports: ['baseball', 'racquetball', 'hockey', 'football', 'basketball', 'soccer', 'lacrosse', 'volleyball', 'polo', 'tennis', 'curling']
+    }
+  }
 
-export default App;
+  handleChange (filter) {
+    this.setState ({ filterString: filter })
+  }
+
+  render() {
+    let sportsList = this.state.sports.filter ((element, index) => {
+      return element.includes (this.state.filterString)
+    })
+    .map ((element, index) => {
+        return <h2 key={index}> {element} </h2>
+    })
+    return (
+      <div>
+        <input onChange={ e => this.handleChange (e.target.value)} type="text"/>
+        {sportsList}
+      </div>
+    )
+  }
+}
