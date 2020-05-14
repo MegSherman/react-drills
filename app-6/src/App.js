@@ -5,7 +5,7 @@ export default class ToDoList extends Component {
   constructor () {
     super ()
     this.state = {
-      tasks: [],
+      list: [],
       userInput: ''
     }
     this.addTask = this.addTask.bind(this)
@@ -17,13 +17,13 @@ export default class ToDoList extends Component {
 
   addTask () {
     this.setState ({
-      tasks: [...this.state.tasks, this.state.userInput],
+      list: [...this.state.list, this.state.userInput],
       userInput: ''
     })
   }
 
   render () {
-    const list = this.state.tasks.map ((element, index) => {
+    const list = this.state.list.map ((element, index) => {
       return <Todo key={index} tasks={element} />
     })
 
@@ -35,7 +35,7 @@ export default class ToDoList extends Component {
         <button onClick={this.addTask}> Add </button>
       </div>
       <br />
-      {tasks}
+      {list}
       </div>
     )
   }
