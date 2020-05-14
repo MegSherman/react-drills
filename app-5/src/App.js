@@ -5,16 +5,8 @@ export default class FlowerImage extends Component {
   render () {
     return (
       <div>
-        <Image src="'./birdofparadise"/>
+        <Image src="birdofparadise.jpg"/>
       </div>
-    )
-  }
-}
-
-export default class Child extends Component {
-  render () {
-    return (
-      <img src={this.props.url}/>
     )
   }
 }
